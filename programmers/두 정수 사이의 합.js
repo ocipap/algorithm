@@ -28,3 +28,7 @@ function bs(a, b) {
         l: b
     };
 }
+
+function solution2 (a, b) {
+    return (a+b) * (Math.abs(b-a) + 1) / 2
+}
