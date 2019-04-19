@@ -4,11 +4,11 @@ new_arr = []
 n, k = map(int, input().split())
 index = 0
 for i in range(1, n+1):
-    arr.append({"v" : i, "n" : i+1})
+    arr.append({"v" : i, "n" : (i+1) % n})
 
 while len(arr) > 0 :
     index = (index + k - 1) % len(arr)
-    arr[index - 1]["n"] = arr[(index + 1) % len(arr)]["n"]
+    arr[index - 1]["n"] = arr[(index + 1) % len(arr)]["v"]
     new_arr.append(str(arr.pop(index)["v"]))
 
 print("<%s>" %(", ".join(new_arr)))
