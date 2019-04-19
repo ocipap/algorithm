@@ -12,37 +12,38 @@ def setGraph (m) :
         graph[nodeB].add(nodeA)
 
 def bfs(start):
+    if not start in graph :
+        print(start)
+        return
     visited = []
     temp = [start]
-    print("----------")
     while temp :
-        print(temp)
         n = temp.pop(0)
         if not n in visited :
             visited.append(n)
-            temp.extend(list(graph[n] - set(visited)))
+            temp.extend(sorted(list(graph[n] - set(visited))))
     visited = list(map(str, visited))    
-    print("----------")
-
     print(" ".join(visited))
 
 def dfs(start):
+    if not start in graph :
+        print(start)
+        return
     visited = []
     temp = [start]
-
     while temp :
-        n = temp.pop(0)
+        n = temp.pop()
         if not n in visited :
             visited.append(n)
-            temp = list(graph[n] - set(visited))
+            temp.extend(sorted(list(graph[n] - set(visited)), reverse=True))
     visited = list(map(str, visited))
     print(" ".join(visited))
+
 
 
 def main () :
     n, m, v = map(int, input().split())
     setGraph(m)
-    print(graph)
     dfs(v)
     bfs(v)
 
