@@ -9,6 +9,8 @@ for i in range(1, n+1):
         dp[i] = arr[i]
     elif i == 2:
         dp[i] = arr[i-1] + arr[i]
+    elif i == 3:
+        dp[i] = max(dp[i-2]  + arr[i], dp[i-3] + arr[i-1] + arr[i])
     else :
         dp[i] = max(max(dp[i-2]  + arr[i], dp[i-3] + arr[i-1] + arr[i]), dp[i-4] + arr[i-1] + arr[i])
 
